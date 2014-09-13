@@ -18,7 +18,7 @@ class ReportController extends Controller
      * @Route("/", name="volleyball_report_index")
      * @Template("VolleyballReportBundle:Report:index.html.twig")
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
         // get route name/params to decypher data to delimit by
         $query = $this->get('doctrine')
@@ -40,8 +40,9 @@ class ReportController extends Controller
      * @Route("/{slug}", name="volleyball_report_show")
      * @Template("VolleyballReportBundle:Report:show.html.twig")
      */
-    public function showAction($slug)
+    public function showAction(Request $request)
     {
+        $slug = $request->getParameter('slug');
         $report = $this->getDoctrine()
             ->getRepository('VolleyballReportBundle:Report')
             ->findOneBySlug($slug);
