@@ -1,7 +1,6 @@
-parameters:
-#    Volleyball_report.example.class: Volleyball\ReportBundle\Example
-
 services:
-#    Volleyball_report.example:
-#        class: %Volleyball_report.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]
+    volleyball.controller.report:
+        class: Volleyball\Bundle\ReportBundle\Controller\ReportController
+        factory_service: sylius.controller.configuration_factory
+        factory_method: createConfiguration
+        arguments: ["sylius", "report", "VolleyballReportBundle:Report"]
